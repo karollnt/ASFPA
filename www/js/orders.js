@@ -97,7 +97,7 @@ const Orders = (function () {
         const itemHtml = '<li>'+
           '<p>Fecha de Asistencia: ' + item.fecha + '</p>' +
           '<p' + (item.fecha_recogida != null && (item.fecha_recogida).indexOf('0000') < 0 ? ' class="color-primary-0"' : '') + '>' +
-            'Fecha recogido: ' + (item.fecha_recogida != null ? item.fecha_recogida.split(' ')[0] : 'No Asistido') + '</p>' +
+            'Fecha de Asistido: ' + (item.fecha_recogida != null ? item.fecha_recogida.split(' ')[0] : 'No Asistido') + '</p>' +
           '<div class="row">' +
             '<div class="col-8">' +
               '<p>Ciudad: ' + item.ciudad + '</p>' +
