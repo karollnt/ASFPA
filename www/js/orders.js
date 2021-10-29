@@ -185,11 +185,13 @@ const Orders = (function () {
           '<p><b>Ciudad</b>: ' + data.ciudad + '</p>' +
           '<p><b>Direcci&oacute;n</b>: ' + data.direccion + '</p>' +
           '<p><b>Comentario</b>: ' + data.comentario + '</p>' +
+          '<p>Tel&eacute;fono: ' + data.telefono + '</p>' +
         '</div>' +
         '<div class="col-6">' +
-          '<p><b>Reciclatendero</b>:</p>' +
+          '<p><b>Mecanico</b>:</p>' +
           '<img src="' + (data.nombre_recicla_tendero == null ? 'images/avatar.jpg' : data.foto) + '">' +
           '<p><b>' + nombre_recicla_tendero + '</b></p>' +
+          '<p>Tel&eacute;fono: ' + data.telefono_empleado + '</p>' +
         '</div>' +
         '<div class="col-12">' +
           '<p><b>Objetos de la solicitud:</b></p><ul class="js-order-items"></ul>' +
