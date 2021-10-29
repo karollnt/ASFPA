@@ -95,9 +95,9 @@ const Orders = (function () {
       }
       const orderListHtml = data.reduce(function (carry, item) {
         const itemHtml = '<li>'+
-          '<p>Fecha para recoger: ' + item.fecha + '</p>' +
+          '<p>Fecha de Asistencia: ' + item.fecha + '</p>' +
           '<p' + (item.fecha_recogida != null && (item.fecha_recogida).indexOf('0000') < 0 ? ' class="color-primary-0"' : '') + '>' +
-            'Fecha recogido: ' + (item.fecha_recogida != null ? item.fecha_recogida.split(' ')[0] : 'No recogido') + '</p>' +
+            'Fecha recogido: ' + (item.fecha_recogida != null ? item.fecha_recogida.split(' ')[0] : 'No Asistido') + '</p>' +
           '<div class="row">' +
             '<div class="col-8">' +
               '<p>Ciudad: ' + item.ciudad + '</p>' +
@@ -168,10 +168,10 @@ const Orders = (function () {
       const nombre_recicla_tendero = data.nombre_recicla_tendero == null 
         ? 'No asignado' : data.nombre_recicla_tendero + ' ' + data.apellido_recicla_tendero;
       const html = '<div class="col-6">' +
-          '<p><b>Fecha para recoger</b><br>' + data.fecha + '</p>' +
+          '<p><b>Fecha de Asistencia</b><br>' + data.fecha + '</p>' +
         '</div>' +
         '<div class="col-6">' +
-          '<p><b>Fecha recogida</b><br>' + (data.fecha_recogida ? data.fecha_recogida : 'No recogido') + '</p>' +
+          '<p><b>Fecha de Asistido</b><br>' + (data.fecha_recogida ? data.fecha_recogida : 'No Asistido') + '</p>' +
         '</div>' +
         (
           data.id_perfil == 2 ?
@@ -192,7 +192,7 @@ const Orders = (function () {
           '<p><b>' + nombre_recicla_tendero + '</b></p>' +
         '</div>' +
         '<div class="col-12">' +
-          '<p><b>Objetos de la solicitud:</b></p><ul class="js-order-items"></ul>' +
+          '<p><b>Asistencia de la solicitud:</b></p><ul class="js-order-items"></ul>' +
           '<p><b>Total:</b> $<span class="js-total-price"></span></p>' +
         '</div>';
       let detailsAjax = $.ajax({
