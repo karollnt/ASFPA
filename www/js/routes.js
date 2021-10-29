@@ -81,9 +81,9 @@ const Routes = (function () {
       $('.js-route-details').html(routeInfoHtml);
       const orderListHtml = data.route.orders.reduce(function (carry, item) {
         const itemHtml = '<li>'+
-          '<p>Fecha para recoger: ' + item.fecha + '</p>' +
+          '<p>Fecha de Asistencia: ' + item.fecha + '</p>' +
           '<p' + (item.fecha_recogida != null && (item.fecha_recogida).indexOf('0000') < 0 ? ' class="color-primary-0"' : '') + '>' +
-            'Fecha recogido: ' + (item.fecha_recogida != null ? item.fecha_recogida.split(' ')[0] : 'No recogido') + '</p>' +
+            'Fecha de Asistido: ' + (item.fecha_recogida != null ? item.fecha_recogida.split(' ')[0] : 'No recogido') + '</p>' +
           '<div class="row">' +
             '<div class="col-8">' +
               '<p>Ciudad: ' + item.ciudad + '</p>' +
