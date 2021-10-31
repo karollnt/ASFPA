@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#27830A">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-startup-image" href="images/apple-touch-startup-image-640x920.png">
+  <title>ASFPerformance</title>
+  <link rel="stylesheet" href="css/swiper.css">
+  <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+  <style>
+    .color-primary-0 { color: #27830A }	/* Main Primary color */
+    .color-primary-1 { color: #5AB63D }
+    .color-primary-2 { color: #3C9E1D }
+    .color-primary-3 { color: #186400 }
+    .color-primary-4 { color: #0F4000 }
+
+    .color-secondary-1-0 { color: #086351 }	/* Main Secondary color (1) */
+    .color-secondary-1-1 { color: #2E8977 }
+    .color-secondary-1-2 { color: #167764 }
+    .color-secondary-1-3 { color: #004C3D }
+    .color-secondary-1-4 { color: #003027 }
+
+    .color-secondary-2-0 { color: #6E920B }	/* Main Secondary color (2) */
+    .color-secondary-2-1 { color: #A7CB44 }
+    .color-secondary-2-2 { color: #8AB021 }
+    .color-secondary-2-3 { color: #527000 }
+    .color-secondary-2-4 { color: #354800 }
+
+    .editform {margin-bottom: 40px;}
+    .editform .form_row {float: none;}
+    .form_row--button {margin-top: 20px;}
+    .update-buttons {margin-top: 20px;}
+    .btn--short {padding: 12px;}
+  </style>
+</head>
+<body id="mobile_wrap">
+
+  <div class="panel-overlay"></div>
+
+  <div class="panel panel-left panel-reveal">
+    <!-- Slider -->
+    <div class="swiper-container-subnav multinav">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <nav class="main_nav_underline">
+            <ul>
+              <li><a href="index.html"><img src="images/icons/gray/home.png" alt="" title="" /><span>Inicio</span></a></li>
+              <li><a href="#" data-popup=".popup-login" class="open-popup js-open-login"><img src="images/icons/gray/lock.png" alt="" title="" /><span>Login</span></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-right panel-reveal">
+    <div class="user_login_info">
+
+      <div class="user_thumb">
+        <div class="user_details">
+          <p>Bienvenido(a), <span class="js-user-name-tag">user</span></p>
+        </div>
+        <div class="user_avatar"><img src="images/avatar3.jpg" class="js-user-image" alt="" title="" /></div>
+      </div>
+
+      <nav class="user-nav">
+        <ul>
+          <li><a href="features.html"><img src="images/icons/gray/settings.png" alt="" title="" /><span>Cuenta</span></a></li>
+          <li> <a href="empresa.html"><img src="images/icons/gray/car.png" alt="" title="" /><span>Empresa</span></a></li>
+          <li><a href="index.html" class="js-logout"><img src="images/icons/gray/logout.png" alt="" title="" /><span>Logout</span></a></li>
+         
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+    <div class="views display-none js-main-view">
+
+      <div class="view view-main">
+
+        <div class="pages">
+
+          <div data-page="index" class="page homepage">
+            <div class="page-content">
+
+              <div class="navbar navbar--fixed navbar--fixed-top">
+                <div class="navbar__col navbar__col--title">
+                  <a href="index.html"><p style="color:#58CCED" ;>ASFPA</p></a>
+                </div>
+              </div>
+                 <!-- Slider -->
+              <div class="swiper-container slidertoolbar">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" style="background-image:url(images/slide12.jpg);">
+                    <div class="slider-caption">
+                   <!--   <h2 data-swiper-parallax="-100%">Quienes Somos?</h2>
+                      <p data-swiper-parallax="-30%"> Asistencia Vehicular con servicios de Ingeniería mecánica práctica automotriz.Servicios técnicos especializados para desvares; <br>mantenimiento preventivo y correctivo de vehículos.</p>
+                      <a href="about.html" class="slider-caption__more" data-swiper-parallax="-60%">Leer Mas</a> 
+                      <a href="crear-solicitud.html" class="slider-caption__more" data-swiper-parallax="-60%">Solicitar</a>  -->
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              
+     <div class="tabs">
+                  
+                      <input type="radio" name="tabs2" class="tabradio" id="tab1" checked="checked">
+                   
+                     
+                        
+                      
+                        
+                          <blockquote>
+                            <h2>¿Quiénes somos?</h2>
+                            <p> El propósito de un taller automotriz es prestar al cliente un servicio adecuado para que reciba confiabilidad y beneficios en el mantenimiento proactivo de su vehículo, con lo cual el cliente obtiene ventajas en la vida útil de su vehículo, un desempeño más seguro y sin problemas.</p>
+                        
+                            <h2>Misión</h2>
+                            <p>Garantizar la seguridad de nuestros clientes al conducir sus vehículos, mediante el mantenimiento preventivo y correctivo que le brindamos a su automóvil, haciendo sentir a cada cliente confort y tranquilidad cuando está al volante</p>
+                        
+                            <h2>Visión</h2>
+                            <p>Proporcionar un buen servicio de mantenimiento automotriz en general, conservando los autos de nuestros clientes en un estado de operación eficiente y seguro, satisfaciendo sus necesidades y expectativas en el mejor tiempo posible. A sabiendas de que usted y su vehículo son lo más importante..</p>
+                        
+                            <h2>Política de calidad</h2>
+                            <p>Servicio Mecánico a Domicilio, para realizar arreglos a su vehículo que se puedan realizar en el lugar. Enviamos el carro al taller con un técnico para ayudarle con su vehículo. Enviamos un mecánico a domicilio para diagnosticar la falla de su vehículo ya sea en calle, en su vivienda o lugar de trabajo. Si el arreglo se puede realizar en el lugar de una vez se hace, si requiere servicio de taller lo trasladamos a nuestro taller automotriz ubicado en el barrio la granja A continuación los servicios que podemos realizar con nuestros mecánicos profesionales : Despinche o montallantas a domicilio Arreglo de guayas y relacionados Revisión y/o cambio de correas de accesorios (no en todos los vehículos es posible realizar a domicilio) Solución a problemas eléctricos Revisión del estado de las 4 llantas En tu hogar, oficina o en la vía le ofrecemos asistencia oportuna. En ocasiones no es necesario trasladar el vehículo al taller, algunas reparaciones son posibles realizarlas donde usted tiene el vehículo Programe su servicio, cuando se requiere sobre la hora dependemos de disponibilidad de técnico.
+
+                             Asistencia Vehicular con servicios de Ingeniería mecánica práctica automotriz. Servicios técnicos especializados para desvares, mantenimiento preventivo y correctivo de vehículos. Mecánico a domicilio para ayudarte a desvarar en el lugar donde tengas tu vehículo, si se requiere una reparación profunda lo realizamos en nuestro taller automotriz.</p>
+                               <span>ASFPERFORMANCE.COM</span>
+                             <br>
+                             <h3>Lista de características</h3>  
+                            <ul class="features_list">
+                            <li><a href="contact.html"><img src="images/icons/black/contact.png" alt="" title="" /><span>Contactenos</span></a></li>
+                         </blockquote>
+                          
+                      </div>
+     
+    
+            
+                    
+                      
+              <div class="swiper-container-toolbar swiper-toolbar">
+                <div class="swiper-pagination-toolbar"></div>
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide toolbar-icon">
+                    <a href="index.html"><img src="images/icons/blue/home.png" alt="" title="" /><span>Inicio</span></a>
+                    <a href="#" data-panel="right" class="open-panel"><img src="images/icons/blue/user.png" alt="" title="" /><span>Perfil</span></a>
+                    <a href="crear-solicitud.html"><img src="images/icons/blue/more.png" alt="" title="" /><span>Solicitar</span></a>
+                    <a href="solicitudes.html"><img src="images/icons/blue/tabs.png" alt="" title="" /><span>Mis Solicitudes</span></a>
+                    <a href="index.html" class="js-logout"><img src="images/icons/blue/logout.png" alt="" title="" /><span>Salir</span></a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Login Popup -->
+   <!-- <div class="popup popup-login">
+      <div class="content-block">
+        <h4>Inicia sesi&oacute;n</h4>
+        <div class="loginform">
+          <form id="LoginForm" class="js-login-form" method="post">
+            <input type="email" name="correo" value="" class="form_input required" placeholder="correo">
+            <input type="password" name="clave" value="" class="form_input required" placeholder="clave">
+            <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">Olvidaste tu clave?</a></div>
+            <input type="submit" name="submit" class="form_submit" id="submit" value="Iniciar sesi&oacute;n">
+            <p class="js-login-error"></p>
+          </form>
+          <div class="signup_bottom">
+            <p>No tienes una cuenta?</p>
+            <a href="#" data-popup=".popup-signup" class="open-popup">Reg&iacute;strate</a>
+          </div>
+        </div>
+        <div class="close_popup_button">
+          <a href="#" class="close-popup" data-popup=".popup-login"><img src="images/icons/black/menu_close.png" alt="" title="" /></a>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Register Popup -->
+   <!-- <div class="popup popup-signup">
+      <div class="content-block">
+        <h4>Reg&iacute;strate</h4>
+        <div class="loginform">
+          <form id="RegisterForm" method="post" class="js-register-user">
+            <input type="text" name="nombre" value="" class="form_input required" placeholder="Nombre" />
+            <input type="text" name="apellido" value="" class="form_input required" placeholder="Apellido" />
+            <input type="email" name="email" value="" class="form_input required" placeholder="Email" />
+            <input type="tel" name="telefono" value="" class="form_input" placeholder="Telefono (opcional)" />
+            <input type="password" name="clave" value="" class="form_input required" placeholder="Clave" />
+            <div class="selector_overlay">
+              <select name="departamento" class="form_input required js-register-department" data-target=".js-register-city" required><option value="" selected>Departamento</option></select>
+            </div>
+            <div class="selector_overlay">
+              <select name="id_ciudad" class="form_input required js-register-city" required><option value="" selected>Ciudad</option></select>
+            </div>
+            <input type="text" name="direccion" value="" class="form_input required" placeholder="Direccion" />
+            <input type="hidden" name="id_perfil" value="1">
+            <input type="hidden" name="id_tipo_identidad" value="1">
+            <input type="hidden" name="identificacion" value="1">
+            <input type="submit" name="submit" class="form_submit" id="submitregister" value="Registrarse" />
+          </form>
+        </div>
+        <div class="close_popup_button">
+          <a href="#" class="close-popup" data-popup=".popup-signup"><img src="images/icons/black/menu_close.png" alt="" title="" /></a>
+        </div>
+      </div>
+    </div> -->
+  
+    <!-- Forgot Password Popup -->
+  <!--  <div class="popup popup-forgot">
+      <div class="content-block">
+        <h4>FORGOT PASSWORD</h4>
+        <div class="loginform">
+          <form id="ForgotForm" method="post" class="js-forgot-password">
+            <input type="text" name="email" value="" class="form_input required" placeholder="email" />
+            <input type="submit" name="submit" class="form_submit" id="submitforgot" value="RESEND PASSWORD" />
+          </form>
+          <div class="signup_bottom">
+            <p>Check your email and follow the instructions to reset your password.</p>
+          </div>
+        </div>
+        <div class="close_popup_button">
+          <a href="#" class="close-popup" data-popup=".popup-forgot"><img src="images/icons/black/menu_close.png" alt="" title="" /></a>
+        </div>
+      </div>
+    </div> -->
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.validate.min.js" ></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery.custom.js"></script>
+    <script src="js/variables.js"></script>
+    <script>const isUserDetailsPage = true;</script>
+    <script src="js/user.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
