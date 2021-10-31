@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="#27830A">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
   <link rel="apple-touch-startup-image" href="images/apple-touch-startup-image-640x920.png">
-  <title>Tu Eco</title>
+  <title>ASFPerformance</title>
   <link rel="stylesheet" href="css/swiper.css">
   <link rel="stylesheet" href="css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="style.css">
@@ -51,7 +51,6 @@
             <ul>
               <li><a href="index.html"><img src="images/icons/gray/home.png" alt="" title="" /><span>Inicio</span></a></li>
               <li><a href="#" data-popup=".popup-login" class="open-popup js-open-login"><img src="images/icons/gray/lock.png" alt="" title="" /><span>Login</span></a></li>
-              <li><a href="about.html"><img src="images/icons/gray/mobile.png" alt="" title="" /><span>Acerca de</span></a></li>
             </ul>
           </nav>
         </div>
@@ -72,7 +71,9 @@
       <nav class="user-nav">
         <ul>
           <li><a href="features.html"><img src="images/icons/gray/settings.png" alt="" title="" /><span>Cuenta</span></a></li>
+          <li> <a href="empresa.html"><img src="images/icons/gray/car.png" alt="" title="" /><span>Empresa</span></a></li>
           <li><a href="index.html" class="js-logout"><img src="images/icons/gray/logout.png" alt="" title="" /><span>Logout</span></a></li>
+         
         </ul>
       </nav>
     </div>
@@ -98,7 +99,13 @@
                 <div class="layout_fullwidth_padding">
                   <div class="js-user-data">
                     <div class="row">
-                      <div class="col-12">
+                      <div class="col-4">
+                        <img src="images/avatar3.jpg" class="js-user-image" alt="" title="" />
+                        <div class="update-buttons">
+                          <button class="btn btn--short js-show-edit-form" data-target=".js-edit-user-photo-form">Cambiar foto</button>
+                        </div>
+                      </div>
+                      <div class="col-8">
                         <dl>
                           <dt>Nombre:</dt>
                           <dd class="js-user-data-name">-</dd>
@@ -107,9 +114,83 @@
                           <dt>Telefono:</dt>
                           <dd class="js-user-data-phone">-</dd>
                         </dl>
+                        <div class="update-buttons">
+                          <button class="btn js-show-edit-form" data-target=".js-edit-user-data-form">Modificar datos</button>
+                        </div>
+                        <div class="update-buttons">
+                          <button class="btn js-show-update-pass" data-target=".js-edit-user-pass-form">Cambiar clave</button>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <form class="js-edit-user-photo-form contactform editform display-none" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="user_id" value="0" class="js-edit-photo-user-id">
+                    <div class="form_row">
+                      <label for="update_photo">Adjuntar archivo</label>
+                      <input type="file" name="image" class="form_input required" id="update_photo">
+                    </div>
+                    <div class="form_row form_row--button">
+                      <button class="btn" type="submit">Actualizar foto</button>
+                    </div>
+                    <p class="js-update-photo-message"></p>
+                  </form>
+                  <form class="contactform editform display-none js-edit-user-data-form">
+                    <h3>Editar datos</h3>
+                    <input type="hidden" name="id_perfil" value="1">
+                    <input type="hidden" name="id_tipo_identidad" value="1">
+                    <input type="hidden" name="id" value="0" class="js-edit-data-user-id">
+                    <div class="form_row">
+                      <label for="edit-name">Nombre(s)</label>
+                      <input type="text" id="edit-name" name="nombre" value="" class="form_input required js-edit-user-name">
+                    </div>
+                     <div class="form_row">
+                      <label for="edit-surname">Apellido(s)</label>
+                      <input type="text" id="edit-surname" name="apellido" value="" class="form_input required js-edit-user-surname">
+                    </div> 
+                    <div class="form_row">
+                      <label for="edit-identity">Identificacion</label>
+                      <input type="text" id="edit-identity" name="identificacion" value="" class="form_input required js-edit-user-identity">
+                    </div>
+                    <div class="form_row">
+                      <label for="edit-phone">Telefono</label>
+                      <input type="text" id="edit-phone" name="telefono" value="" class="form_input required js-edit-user-phone">
+                    </div>
+                    <div class="form_row">
+                      <label for="edit-address">Direccion</label>
+                      <input type="text" id="edit-address" name="direccion" value="" class="form_input required js-edit-user-address">
+                    </div>
+                    <div class="form_row">
+                      <label for="edit-department">Departamento</label>
+                      <div class="selector_overlay">
+                        <select id="edit-department" name="departamento" class="form_input required js-edit-user-department" data-target=".js-edit-user-city"></select>
+                      </div>
+                    </div>
+                    <div class="form_row">
+                      <label for="edit-city">Ciudad</label>
+                      <div class="selector_overlay">
+                        <select id="edit-city" name="id_ciudad" class="form_input required js-edit-user-city"></select>
+                      </div>
+                    </div>
+                    <div class="form_row form_row--button">
+                      <button class="btn" type="submit">Actualizar datos</button>
+                    </div>
+                  </form>
+                  <form class="editform js-edit-user-pass-form contactform display-none">
+                    <h3>Editar contrase&ntilde;a</h3>
+                    <input type="hidden" name="user_id" value="" class="js-edit-password-id">
+                    <div class="form_row">
+                      <label for="edit-new-password">Nueva contrase&ntilde;a</label>
+                      <input type="password" id="edit-new-password" name="clave" value="" class="form_input required js-edit-user-pass-1">
+                    </div>
+                    <div class="form_row">
+                      <label for="edit-new-password-2">Repita la nueva contrase&ntilde;a</label>
+                      <input type="password" id="edit-new-password-2" name="clave-1" value="" class="form_input required js-edit-user-pass-2">
+                    </div>
+                    <div class="form_row form_row--button">
+                      <button class="btn" type="submit">Actualizar datos</button>
+                      <p class="js-update-pass-message"></p>
+                    </div>
+                  </form>
                 </div>
               </div>
 
@@ -117,11 +198,11 @@
                 <div class="swiper-pagination-toolbar"></div>
                 <div class="swiper-wrapper">
                   <div class="swiper-slide toolbar-icon">
-                    <a href="index.html"><img src="images/icons/blue/home.png" alt="" title="" /></a>
-                    <a href="#" data-panel="right" class="open-panel"><img src="images/icons/blue/user.png" alt="" title="" /></a>
-                    <a href="rutas.html"><img src="images/icons/blue/more.png" alt="" title="" /></a>
-                    <a href="solicitudes.html"><img src="images/icons/blue/tabs.png" alt="" title="" /></a>
-                    <a href="index.html" class="js-logout"><img src="images/icons/blue/logout.png" alt="" title="" /></a>
+                    <a href="index.html"><img src="images/icons/blue/home.png" alt="" title="" /><span>Inicio</span></a>
+                    <a href="#" data-panel="right" class="open-panel"><img src="images/icons/blue/user.png" alt="" title="" /><span>Perfil</span></a>
+                    <a href="crear-solicitud.html"><img src="images/icons/blue/more.png" alt="" title="" /><span>Solicitar</span></a>
+                    <a href="solicitudes.html"><img src="images/icons/blue/tabs.png" alt="" title="" /><span>Mis Solicitudes</span></a>
+                    <a href="index.html" class="js-logout"><img src="images/icons/blue/logout.png" alt="" title="" /><span>Salir</span></a>
                   </div>
                 </div>
               </div>
@@ -134,25 +215,30 @@
     </div>
 
     <!-- Login Popup -->
-    <div class="popup popup-login">
+  <!--  <div class="popup popup-login">
       <div class="content-block">
         <h4>Inicia sesi&oacute;n</h4>
         <div class="loginform">
           <form id="LoginForm" class="js-login-form" method="post">
             <input type="email" name="correo" value="" class="form_input required" placeholder="correo">
             <input type="password" name="clave" value="" class="form_input required" placeholder="clave">
+            <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">Olvidaste tu clave?</a></div>
             <input type="submit" name="submit" class="form_submit" id="submit" value="Iniciar sesi&oacute;n">
             <p class="js-login-error"></p>
           </form>
+          <div class="signup_bottom">
+            <p>No tienes una cuenta?</p>
+            <a href="#" data-popup=".popup-signup" class="open-popup">Reg&iacute;strate</a>
+          </div>
         </div>
         <div class="close_popup_button">
           <a href="#" class="close-popup" data-popup=".popup-login"><img src="images/icons/black/menu_close.png" alt="" title="" /></a>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Register Popup -->
-    <div class="popup popup-signup">
+  <!--  <div class="popup popup-signup">
       <div class="content-block">
         <h4>Reg&iacute;strate</h4>
         <div class="loginform">
@@ -169,7 +255,7 @@
               <select name="id_ciudad" class="form_input required js-register-city" required><option value="" selected>Ciudad</option></select>
             </div>
             <input type="text" name="direccion" value="" class="form_input required" placeholder="Direccion" />
-            <input type="hidden" name="id_perfil" value="3">
+            <input type="hidden" name="id_perfil" value="1">
             <input type="hidden" name="id_tipo_identidad" value="1">
             <input type="hidden" name="identificacion" value="1">
             <input type="submit" name="submit" class="form_submit" id="submitregister" value="Registrarse" />
@@ -179,15 +265,15 @@
           <a href="#" class="close-popup" data-popup=".popup-signup"><img src="images/icons/black/menu_close.png" alt="" title="" /></a>
         </div>
       </div>
-    </div>
+    </div> -->
   
     <!-- Forgot Password Popup -->
-    <div class="popup popup-forgot">
+    <!-- <div class="popup popup-forgot">
       <div class="content-block">
         <h4>FORGOT PASSWORD</h4>
         <div class="loginform">
-          <form id="ForgotForm" method="post">
-            <input type="text" name="Email" value="" class="form_input required" placeholder="email" />
+          <form id="ForgotForm" method="post" class="js-forgot-password">
+            <input type="text" name="email" value="" class="form_input required" placeholder="email" />
             <input type="submit" name="submit" class="form_submit" id="submitforgot" value="RESEND PASSWORD" />
           </form>
           <div class="signup_bottom">
@@ -198,7 +284,7 @@
           <a href="#" class="close-popup" data-popup=".popup-forgot"><img src="images/icons/black/menu_close.png" alt="" title="" /></a>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery.validate.min.js" ></script>
