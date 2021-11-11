@@ -3211,3 +3211,40 @@ max-width:50%;
 padding:15px 0 0 0;
 }
 }
+
+.contactform .toggle__label {
+  padding: 6px 10px;
+}
+
+.toggle__input:checked ~ .toggle__content {
+  max-height: none;
+}
+
+.product-list {
+  padding-top: 10px;
+}
+
+.order-submit {
+  padding-bottom: 20px;
+}
+
+.order-detail-items {
+  width: 100%;
+}
+
+.order-detail-items th {
+  text-align: left;
+}
+
+.order-detail-items tr {
+  border: 1px solid;
+}
+
+.order-detail-items th,
+.order-detail-items td {
+  padding: 2px 5px;
+}
+
+.order-total {
+  margin-top: 14px !important;
+}

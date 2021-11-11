@@ -1,10 +1,12 @@
 const Orders = (function () {
   let categories = null;
+  let brands = null;
 
   const init = function () {
     if (typeof isCreateOrder !== 'undefined' && isCreateOrder) {
       $('.js-user-id').val(app.user.id);
-      getOrderCategories();
+      initAccordion();
+      getBrands();
       setEvents();
     } else if (typeof isListOrders !== 'undefined' && isListOrders) {
       listUserOrders();
@@ -24,25 +26,34 @@ const Orders = (function () {
       }
       categories = JSON.parse(JSON.stringify(data));
       fillFormCategories();
+      showStep(3);
     });
   };
 
   const fillFormCategories = function () {
+    const brandId = $('.js-brand-item:checked').val();
+    const measurementId = $('.js-measurement-item:checked').val();
     const html = categories.reduce(function (carry, current) {
+      if (brandId != current.id_marca || current.id_medida != measurementId) {
+        return carry;
+      }
+
       const valueString = current.id + ';' + (current.precio * 1);
       const currentHtml = '<li class="row">' +
-        '<div class="col-4">' +
-        (current.foto ? '<img src = "' + current.foto + '">' : '') +
+        '<div class="col-1">' +
+          '<input type="checkbox" id="category_' + current.id + '" name="category" class="js-category-item" value="' + valueString + '" data-id="' + current.id + '"> ' +
+        '</div>' +
+        '<div class="col-5">' +
+          (current.foto ? '<img src="' + current.foto + '">' : '') +
           '<label class="label-checkbox item-content" for="category_' + current.id + '">' +
-            '<input type="checkbox" id="category_' + current.id + '" name="category" class="js-category-item" value="' + valueString + '" data-id="' + current.id + '"> ' +
-            '<span class="item-title">' + current.nombre + '</span>' +
+            current.nombre +
           '</label>' +
         '</div>' +
-        '<div class="col-4">' +
-          '$ ' + (current.precio * 1) + ' (' + current.medida +')' +
+        '<div class="col-3">' +
+          '$ ' + (current.precio * 1) +
         '</div>' +
-        '<div class="col-4">' +
-          '<input type="number" name="cantidad_' + current.id + '" class="form_input js-item-quantity-' + current.id + '" value="0">' +
+        '<div class="col-3">' +
+          '<input type="number" name="cantidad_' + current.id + '" class="form_input js-item-quantity-' + current.id + '" value="1">' +
         '</div>' +
       '</li>';
       return carry + currentHtml;
@@ -51,7 +62,10 @@ const Orders = (function () {
   };
 
   const setEvents = function () {
-    $(document).on('submit', '.js-create-request-form', createOrder);
+    $(document)
+      .on('submit', '.js-create-request-form', createOrder)
+      .on('change', '.js-brand-item', getBrandItems)
+      .on('change', '.js-measurement-item', getOrderCategories);
   };
 
   const createOrder = function (ev) {
@@ -194,8 +208,18 @@ const Orders = (function () {
           '<p>Tel&eacute;fono: ' + data.telefono_empleado + '</p>' +
         '</div>' +
         '<div class="col-12">' +
-          '<p><b>Asistencia de la solicitud:</b></p><ul class="js-order-items"></ul>' +
-          '<p><b>Total:</b> $<span class="js-total-price"></span></p>' +
+        '<p><b>Asistencia de la solicitud:</b></p>' +
+        '<table class="order-detail-items">' +
+          '<thead>' +
+            '<tr>' +
+              '<th>Producto/servicio</th>' +
+              '<th>Cantidad</th>' +
+              '<th>Total</th>' +
+            '</tr>' +
+          '</thead>' +
+          '<tbody class="js-order-items"></tbody>' +
+        '</table>' +
+        '<p class="order-total"><b>Total:</b> $<span class="js-total-price"></span></p>' +
         '</div>';
       let detailsAjax = $.ajax({
         data: { order_id: params.id },
@@ -208,8 +232,12 @@ const Orders = (function () {
         const detailsHtml = detailsData.reduce(function (carry, item) {
           const lineItemPrice = item.precio * item.cantidad;
           total += lineItemPrice;
-          const detailHtml = '<li><p>- <b>' + item.nombre_categoria + '</b>: $ ' + lineItemPrice + ' - ' +
-            item.cantidad + ' ' + item.medida + '(s) -> $' + (item.precio * 1) + ' / ' + item.medida + '</p></li>';
+          const detailHtml = '<tr>' +
+            '<td>' + item.nombre_categoria + ' (' + item.nombre_marca + ')<br>' + item.medida + '</td>' +
+            '<td>' + item.cantidad + '</td>' +
+            '<td>$ ' + lineItemPrice + '</td>' +
+          '</tr>';
+
           return carry + detailHtml;
         }, '');
         $('.js-order-items').html(detailsHtml);
@@ -242,6 +270,88 @@ const Orders = (function () {
     .fail(function (data) {
       alert('No se pudo actualizar, intente m&acute;s tarde');
     });
+  };
+
+  const getBrands = function () {
+    let ajax = $.ajax({
+      method: 'GET',
+      url: Variables.backendURL + 'category/get_brands'
+    });
+    ajax.done(function (data) {
+      if (!data || data.length < 1) {
+        return;
+      }
+      brands = JSON.parse(JSON.stringify(data));
+      fillBrands();
+    });
+  };
+
+  const initAccordion = function () {
+    let acc = document.getElementsByClassName("accordion");
+
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+  };
+
+  const fillBrands = function () {
+    const html = brands.reduce(function (carry, current) {
+      const currentHtml = '<li class="col-6">' +
+        '<label class="label-radio item-content" for="brand_' + current.id + '">' +
+          '<input type="radio" id="brand_' + current.id + '" name="brand" class="js-brand-item" value="' + current.id + '" data-index="' + current.id + '"> ' +
+          '<span class="item-title">' + current.nombre + '</span>' +
+        '</label>' +
+      '</li>';
+      return carry + currentHtml;
+    }, '');
+    $('.js-brand-list').html(html);
+  };
+
+  const showStep = function (step) {
+    $('#togg' + step).prop('checked', true);
+    $('#togg' + step)[0].scrollIntoView({block: 'start', behavior: 'smooth'});
+  };
+
+  const getBrandItems = function () {
+    getMeasurements();
+  };
+
+  const getMeasurements = function () {
+    let ajax = $.ajax({
+      method: 'GET',
+      url: Variables.backendURL + 'category/get_measurements'
+    });
+    ajax.done(function (data) {
+      if (!data || data.length < 1) {
+        return;
+      }
+      measurements = JSON.parse(JSON.stringify(data));
+      fillMeasurements();
+      showStep(2);
+    });
+  };
+
+  const fillMeasurements = function () {
+    const html = measurements.reduce(function (carry, current) {
+      const currentHtml = '<li class="row">' +
+        '<div class="col-12">' +
+          '<label class="label-radio item-content" for="measurement_' + current.id + '">' +
+            '<input type="radio" id="measurement_' + current.id + '" name="measurement" class="js-measurement-item" value="' + current.id + '" data-id="' + current.id + '"> ' +
+            '<span class="item-title">' + current.nombre + '</span>' +
+          '</label>' +
+        '</div>' +
+      '</li>';
+      return carry + currentHtml;
+    }, '');
+    $('.js-measurement-list').html(html);
   };
 
   return {
